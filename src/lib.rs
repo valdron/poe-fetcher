@@ -9,8 +9,8 @@ use std::io::Read;
 
 #[derive(Debug)]
 pub struct PoeSite {
-    change_id: String,
-    body: String,
+    pub change_id: String,
+    pub body: String,
 }
 
 #[derive(Debug)]
