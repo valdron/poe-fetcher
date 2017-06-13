@@ -8,13 +8,13 @@ use regex::Regex;
 use std::io::Read;
 
 #[derive(Debug)]
-struct PoeSite {
+pub struct PoeSite {
     change_id: String,
     body: String,
 }
 
 #[derive(Debug)]
-struct PoeFetcher {
+pub struct PoeFetcher {
     url: Url,
     client: Client,
     next_id: String,
@@ -58,9 +58,10 @@ impl Iterator for PoeFetcher {
                     _ => {}
                 }
 
-                {
-                    
-                }
+                self.next_id = match extract_next_id(&result) {
+                    Ok( s ) => s,
+                    _ => return None
+                };
 
                 Some(PoeSite {
                          change_id: old_id,
