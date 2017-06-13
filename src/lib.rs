@@ -22,9 +22,9 @@ pub struct PoeFetcher {
 
 
 impl PoeFetcher {
-    pub fn new(start_url: &str) -> Self {
+    pub fn new(start_url: Url) -> Self {
         Self {
-            url: Url::parse(start_url).unwrap(),
+            url: start_url,
             client: Client::new(),
             next_id: "".into(),
         }
