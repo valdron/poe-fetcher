@@ -11,10 +11,11 @@ use std::io::Read;
 struct PoeSite {
     change_id: String,
     body: Vec<u8>,
+
 }
 
 #[derive(Debug)]
-struct PoeFetcher {
+pub struct PoeFetcher {
     url: Url,
     client: Client,
     next_id: String,
@@ -60,6 +61,7 @@ impl Iterator for PoeFetcher {
 
                 self.next_id = match extract_next_id(&result) {
                     Ok(x) => x,
+
                     _ => return None
                 };
 
