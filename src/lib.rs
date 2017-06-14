@@ -8,9 +8,9 @@ use regex::bytes::Regex;
 use std::io::Read;
 
 #[derive(Debug)]
-struct PoeSite {
-    change_id: String,
-    body: Vec<u8>,
+pub struct PoeSite {
+    pub change_id: String,
+    pub body: Vec<u8>,
 
 }
 
