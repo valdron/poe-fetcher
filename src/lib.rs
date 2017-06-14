@@ -3,6 +3,7 @@ extern crate reqwest;
 extern crate regex;
 
 use reqwest::{Client, Url};
+use reqwest::header::{Headers, ContentEncoding, Encoding};
 use reqwest::Method;
 use regex::bytes::Regex;
 use std::io::Read;
@@ -40,8 +41,11 @@ impl Iterator for PoeFetcher {
             .query_pairs_mut()
             .clear()
             .append_pair("id", &self.next_id);
+        
+        let mut headers = Headers::new();
+        headers.set(ContentEncoding(vec![Encoding::Gzip]));
 
-        let response = self.client.request(Method::Get, self.url.clone()).send();
+        let response = self.client.request(Method::Get, self.url.clone()).headers(headers).send();
 
 
 
