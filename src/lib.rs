@@ -28,7 +28,7 @@ impl PoeFetcher {
         Self {
             url: start_url,
             client: Client::new().unwrap(),
-            next_id: "".into(),
+            next_id: "0-0-0-0-0".into(),
         }
     }
 }
